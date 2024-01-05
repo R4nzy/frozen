@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your IP Address</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        margin-top: 50px;
+    }
+    #ip-address {
+        font-size: 24px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+<h1>Your IP Address</h1>
+<p>The IP address of your device is: <span id="ip-address"></span></p>
+
+<script>
+window.onload = function() {
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => document.getElementById('ip-address').textContent = data.ip)
+        .catch(error => console.error('Error:', error));
+};
+</script>
+</body>
+</html>
